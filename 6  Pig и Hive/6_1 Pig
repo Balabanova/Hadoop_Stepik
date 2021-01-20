@@ -1,0 +1,24 @@
+1. Высокоуровневая платформа в Hadoop для запуска MapReduce задач
+
+2. Среда выполнения программ
+   Компилятор программ на PigLatin
+   Язык PigLatin
+
+3. Локальный
+   В Hadoop (mapreduce)
+
+4. $pig test.pig -x local
+
+5. grunt
+
+6. Поле (field)
+   Кортеж (tuple)
+   Мешок (bag)
+
+7. Мешок (bag) - Таблица (table)
+   Кортеж (tuple) - Строка (row)
+   Поле (field) - Ячейка (cell)
+   
+8. 1
+
+9. data = LOAD '/data/logs/today.log' USING PigStorage(',') AS (timestamp:long,  uid:chararray, url:chararray);
