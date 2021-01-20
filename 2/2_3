@@ -1,0 +1,14 @@
+1. FTPFileSystem
+   DistributedFileSystem
+   LocalFileSystem
+   HftpFileSystem
+   
+2. Path path =  new Path("hdfs://server0:9000/data/logs.txt")
+
+3. Default FS: hdfs://prdhdp:9999
+
+4. /data/logs/2015.09.*.txt
+
+5. -get
+   -put
+   -cp
