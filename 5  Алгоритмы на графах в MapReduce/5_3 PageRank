@@ -1,0 +1,90 @@
+1. PageRank - мера авторитетности сайта, рассчитанная по ссылочному графу
+   PageRank - вероятность посещения сайта при переходе по ссылкам
+
+2. Пользователь переходит по ссылкам с одинаковой вероятностью
+   Пользователь начинает свой путь с произвольного сайта в интернете
+
+3. www.stepa-hadoop.org (т.к. есть входящая ссылка с высокопосещаемого ресурса)
+
+4. 0.65
+
+5. 0.08
+
+6. python
+
+import sys
+
+test_data = ['1	0.200	{2,4}', '2	0.200	{3,5}', '3	0.200	{4}', '4	0.200	{5}', '5	0.200	{1,2,3}']
+
+for inp in sys.stdin:
+    (key, value, points) = inp.strip().split('\t')
+    print(key + '\t' + value + '\t' + points)
+    points = list(str(points).lstrip('{').rstrip('}').split(','))
+    # print(points, len(points))
+    if len(points) > 0:
+        value = float(value) / len(points)
+        for i in points:
+            # print(i + '\t' + str(round(value, 3)) + '\t' + '{}')
+            print(i + '\t' + '{0:.3f}'.format(round(value, 3)) + '\t' + '{}')
+            
+7. python
+
+import sys
+
+test_data = ['1	0.067	{}', '1	0.200	{2,4}', '2	0.067	{}', '2	0.100	{}', '2	0.200	{3,5}',
+             '3	0.067	{}', '3	0.100	{}', '3	0.200	{4}', '4	0.100	{}', '4	0.200	{}',
+             '4	0.200	{5}', '5	0.100	{}', '5	0.200	{}', '5	0.200	{1,2,3}', '6	0.600	{2,3,4}']
+
+(lastKey, lastValue, Pts) = (None, None, '{}')
+sumValue = 0
+endPts = '{}'
+
+for inp in sys.stdin:
+    (key, value, points) = inp.strip().split('\t')
+    if lastKey and lastKey != key:
+        print(str(lastKey) + '\t' + '{0:.3f}'.format(round(sumValue, 3)) + '\t' + endPts)
+        (lastKey, lastValue, Pts) = (key, value, points)
+        # sumValue = float(value)
+        if points == '{}':
+            sumValue = float(value)
+        else:
+            sumValue = 0
+        endPts = points
+    else:
+        if points == '{}':
+            sumValue = sumValue + float(value)
+        else:
+            endPts = points
+        (lastKey, lastValue, Pts) = (key, value, points)
+if lastKey:
+    print(str(lastKey) + '\t' + '{0:.3f}'.format(round(sumValue, 3)) + '\t' + endPts)
+    
+8. python
+
+import sys
+
+def printRes(v, pr, out):
+    alpha = 0.1
+    count = 5
+    if v != "":
+        print(v + "\t" + ("%.3f" % (alpha * (1.0 / count) + (1 - alpha) * pr)) + "\t" + out)
+
+prevV = ""
+prevPr = 0
+prevOut = ""
+for line in sys.stdin:
+    v, pr, out = line.strip().split("\t")
+    if prevV != v:
+        printRes(prevV, prevPr, prevOut)
+        prevV = v
+        prevPr = 0
+        prevOut = "{}"
+    if len(out) > 2:
+        prevOut = out
+    else:
+        prevPr += float(pr)
+printRes(prevV, prevPr, prevOut)
+
+9. Всегда делать фиксированное число итераций (например, 100)
+   Останавливаться, когда все значение перестанут меняться
+   Останавливаться, когда изменения значений после каждой итерации будут меньше фиксированного маленького числа
