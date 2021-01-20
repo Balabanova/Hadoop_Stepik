@@ -1,0 +1,35 @@
+1. org.apache.hadoop.mapreduce
+
+2. Определение числа редьюсеров
+   Определение input / output путей
+   Определение формата входных / выходных данных
+   
+3. cleanup(Context context)
+   map(KeyIn key, ValueIn value, Context context)
+   setup(Context context)
+   
+4. Посылка статистики задачи в JobTracker
+   Запись выходных данных
+   Получение конфигурации задачи
+   
+5. 1 3 1
+
+6. Определяет номер reducer для пары key/value
+
+7. InputFormat.addInputPath(Job, Path);
+   Job.setInputFormatClass(InputFormat.class);
+   
+8. Job.setOutputKeyClass(KeyType);
+   Job.setOutputValueClass(ValueType);
+   Job.setOutputFormatClass(OutputFormat.class);
+   OutputFormat.setOutputPath(Job, Path);
+   
+9. Job.setMapOutputValueClass(ValueType);
+   Job.setMapOutputKeyClass(KeyType);
+   
+10. Mapper
+
+11. Тип ключа промежуточных данных между Map и Reduce
+    Тип значения промежуточных данных между Map и Reduce
+    Тип значения входных данных MapReduce задачи
+    Тип ключа входных данных MapReduce задачи
