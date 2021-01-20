@@ -1,0 +1,29 @@
+1. Типы входных ключа и значения у Reducer совпадают с типами его выходных ключа и значения
+   Результат работы задачи не зависит от использования/неиспользования этапа Combine
+   Типы выходных ключа и значения у Mapper совпадают с типами выходных ключа и значения у Reducer
+   Тип входного ключа Reducer совпадает с типом его выходного ключа
+
+2. Либо 3 раза, либо ни разу
+
+3. WritableComparable
+
+4. List<InputSplit> getSplits(Context)
+   RecordReader<K, V> createRecordReader(InputSplit, Context)
+
+5. Создание объекта OutputCommiter для обработки output путей в случае падения воркера
+   Создание объекта для записи данных RecordWriter
+   Проверка output пути
+   
+6. Пишет в циклический буфер, сбрасывая на диск в случае его заполнения
+
+7. shuffle
+
+8. hadoop
+   jar
+   stepic.org.jar
+   org.stepic.WordCount
+   -D
+   mapred.reduce.tasks=10
+
+9. 6
+   
