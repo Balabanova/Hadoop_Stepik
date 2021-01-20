@@ -1,0 +1,95 @@
+1. python
+
+import sys
+import re
+text=''
+for line in sys.stdin:
+    text=line
+    text = re.compile('\w+').findall(line)#re.compile(u'\w+', re.UNICODE)
+    #print(text)
+    c=text
+    #print()
+    l=text[0]
+    #c[0]=c[0][c[0].index(':',1)+1:]
+    for i in range(len(c)):
+        if i >0:
+            print(text[i]+'#'+l+'\t1')
+            
+2. python
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Main {
+	public static void main(final String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				
+		String s, lastWord = null, lastKey = null;
+		int counter = 0;
+		
+		while((s = br.readLine()) != null) {
+			String[] current = s.split("[#\t]");
+			
+			if((!current[0].equals(lastWord) && lastWord != null) || (!current[1].equals(lastKey) && lastKey != null)) {
+				System.out.println(lastWord + "\t" + lastKey + "\t" + counter);
+				counter = 0;
+			} 
+			lastWord = current[0];
+			lastKey = current[1];
+			counter++;			
+		} 
+		System.out.println(lastWord + "\t" + lastKey + "\t" + counter);	
+	}
+}
+
+3. python
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Main {
+	public static void main(final String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				
+		String s;
+		
+		while((s = br.readLine()) != null) {
+			String[] current = s.split("[#\t]");
+			
+			System.out.println(current[0] + "\t" + current[1] + ";" + current[2] + ";" + 1);
+		}
+	}
+}
+
+4. java
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Main {
+	public static void main(final String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				
+		String s, last = null;
+		List<String> result = new LinkedList<>();
+		
+		while((s = br.readLine()) != null) {
+			String[] current = s.split("[;\t]");
+			if (!current[0].equals(last) && last != null) {
+				for(String entry : result) {
+					System.out.println(entry + "\t" + result.size());
+				}
+				result.clear();
+			}
+			result.add(current[0] + "#" + current[1] + "\t" + current[2]);
+			last = current[0];
+		}
+		
+		for(String entry : result) {
+			System.out.println(entry + "\t" + result.size());
+		}
+	}
+}
+
