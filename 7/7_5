@@ -1,0 +1,18 @@
+1. Распределенная база данных
+   Имеет SQL-подобный язык для доступа к данным
+   Имеет механизмы для горизонтального масштабирования
+
+2. CREATE KEYSPACE Users
+   WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 10}
+   
+3. SuperColumn
+
+4. quorum
+
+5. All
+   One
+   Zero
+   Any
+   Quorum
+
+6. На следующих серверах в кольце
