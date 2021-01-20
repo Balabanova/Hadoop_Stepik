@@ -1,0 +1,223 @@
+1. Между Map и Reducer передается много пар key / value
+
+2. Между Map и Reducer передается много пар key / value
+
+3. python
+
+from collections import Counter
+import sys
+
+for line in sys.stdin:
+    cnt = Counter(line.split())
+    for key, val in cnt.items():
+        print(f'{key}\t{val}')
+        
+4. python
+
+from collections import defaultdict
+import sys
+
+cnt = defaultdict(int)
+for line in sys.stdin:
+    for word in line.split():
+        cnt[word] += 1
+        
+for key, val in cnt.items():
+    print(f'{key}\t{val}')
+
+5. python
+
+from collections import defaultdict
+import sys
+
+sum_ = defaultdict(int)
+cnt_ = defaultdict(int)
+
+for line in sys.stdin:
+    key, val = line.split('\t')
+    sum_[key] += int(val)
+    cnt_[key] += 1
+        
+for key in cnt_:
+    avg = int(sum_[key] / cnt_[key])
+    print(f'{key}\t{avg}')
+    
+6. python
+
+from collections import defaultdict
+import sys
+
+sum_ = defaultdict(int)
+cnt_ = defaultdict(int)
+
+for line in sys.stdin:
+    key, val = line.split('\t')
+    val1, val2 = val.split(';')
+    sum_[key] += int(val1)
+    cnt_[key] += int(val2)
+        
+for key in cnt_:
+    print(f'{key}\t{sum_[key]};{cnt_[key]}')
+    
+7. python
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Main {    
+    public static void main(final String[] args) throws Exception {
+    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));            
+    	String s;
+    	
+        while((s = br.readLine()) != null) {
+        	String[] current = s.split("\t");
+        	String[] groups = current[1].split(",");
+        	for(String str : groups) {
+        		System.out.println(current[0] + "," + str + "\t" + 1);
+        	}
+    	}        
+    }
+}
+
+8. python
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Main {    
+    public static void main(final String[] args) throws Exception {
+    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));  
+        
+    	String s, currentWord = "";
+    	
+    	while((s = br.readLine()) != null) {
+    		String[] entry = s.split("\t");
+    		 if(!entry[0].equals(currentWord)) {
+    			 System.out.println(entry[0]);
+    			 currentWord = entry[0];
+    		 } else {
+    			 continue;
+    		 }
+    	}
+    }
+}
+
+9. python
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Main {    
+    public static void main(final String[] args) throws Exception {
+    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));  
+        
+    	String s;
+    	
+    	while((s = br.readLine()) != null) {
+    		String[] entry = s.split(",");
+    		System.out.println(entry[1] + "\t" + 1);
+    	}
+    }
+}
+
+10. java
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class Main {
+	public static void main(final String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		Set<String> distinct = new HashSet<>();
+		String s;
+		
+		while((s = br.readLine()) != null) {
+			distinct.add(s);
+		}
+		
+		Map<String, Integer> data = new HashMap<>();
+		for(Iterator<String> it = distinct.iterator(); it.hasNext(); ) {
+			String entry = it.next();
+			String[] current = entry.split("\t");
+			if(data.containsKey(current[1])) {
+				data.replace(current[1], data.get(current[1]) + 1);
+			} else {
+				data.put(current[1], 1);
+			}
+		}
+		
+		for(Entry<String, Integer> entry : data.entrySet()) {
+			System.out.println(entry.getKey() + "\t" + entry.getValue());
+		}
+	}
+}
+
+11. java
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Main {
+	public static void main(final String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				
+		String s;
+		
+		while((s = br.readLine()) != null) {
+			String[] current = s.split(" ");
+			for(String entry : current) {
+				for(String pair : current) {
+					if(entry.equals(pair)) {
+						continue;
+					}
+					System.out.println(entry + "," + pair + "\t" + 1);
+				}
+			}
+		}
+	}
+}
+
+12. java
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
+public class Main {
+	public static void main(final String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				
+		String s;
+		
+		while((s = br.readLine()) != null) {
+			String[] current = s.split(" ");
+			for(String entry : current) {
+				Map<String, Integer> data = new HashMap<>();
+				for(String pair : current) {
+					if(!pair.equals(entry)) {
+						if(!data.containsKey(pair)) {
+							data.put(pair, 1);	
+						} else {
+							data.replace(pair, data.get(pair) + 1);
+						}
+					}
+				}
+				
+				StringBuilder result = new StringBuilder();
+				for(Entry<String, Integer> d : data.entrySet()) {
+					result.append(d.getKey() + ":" + d.getValue() + ",");
+				}				
+				System.out.println(entry + "\t" + result.substring(0, result.length() - 1));
+			}
+		}
+	}
+}
