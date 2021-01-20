@@ -1,0 +1,22 @@
+1. HiveQL
+
+2. Нельзя, т.к. команды в Hive превращаются в MapReduce задачи и выполняются небыстро
+   Нельзя, т.к. Hive не является базой данных
+
+3. Столбец
+   Таблица
+   Строка
+   
+4. Derby DB
+   MySQL
+   
+5. create table users (name string, email string, age bigint) row format delimited fields terminated by ';' stored as textfile
+
+6. LOAD DATA LOCAL INPATH '/data/users.txt'
+   OVERWRITE INTO TABLE users;
+   
+7. 2016-01-07
+
+8. 2
+
+9. insert overwrite table log_urls select l.time, l.url, u.title from log l join urls u on (l.url = u.url)
