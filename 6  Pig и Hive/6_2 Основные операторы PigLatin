@@ -1,0 +1,19 @@
+1. log: {url: chararray, ts:long}
+
+2. ILLUSTRATE
+
+3. (a, {(a, 7), (a, 3), (a, 5)})
+
+4. FOREACH log GENERATE ts, url
+
+5. (3)
+
+6. ({(Veni), (vidi), (vici)})
+
+7. 9
+
+8. 0
+
+9. JOIN log by url, page by url
+
+10. ====(,,user1,12)
