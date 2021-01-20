@@ -1,0 +1,185 @@
+1. python
+
+import sys
+
+for line in sys.stdin:
+    time, id, url = line.strip().split('\t')
+    if id == 'user10':
+        print(line, end="")  
+        
+2. java
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Main {
+	public static void main(final String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				
+		String s;
+		
+		while((s = br.readLine()) != null) {
+			String[] current = s.split("\t");
+            System.out.println(current[2]);
+        }
+	}
+}
+
+3. java
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Main {
+	public static void main(final String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				
+		String s;
+		String last = "";
+		
+		while((s = br.readLine()) != null) {
+			String[] current = s.split("\t");
+			if(!current[0].equals(last)) {
+				System.out.println(current[0]);
+				last = current[0];
+			}
+        }
+	}
+}
+
+4. java
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Main {
+	public static void main(final String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				
+		String s;
+		String last = "";
+		
+		while((s = br.readLine()) != null) {
+			String[] current = s.split("\t");
+			
+			if(!current[0].equals(last)) {
+				last = current[0];
+			} else {
+                System.out.println(last);                
+            }
+        }
+	}
+}
+
+5. java
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Main {
+	public static void main(final String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				
+		String s;
+		
+		List<String> result = new LinkedList<>();
+		
+		while((s = br.readLine()) != null) {
+			String[] current = s.split("\t");
+			
+			if(current[1].equals("A")) {
+				result.add(current[0]);
+			} else {
+				if(result.contains(current[0])) {
+					result.remove(current[0]);
+				}
+			}
+        }
+		for(String entry: result) {
+			System.out.println(entry);
+		}
+	}
+}
+
+6. java
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Main {
+	public static void main(final String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				
+		String s, last = "";		
+		
+		List<String> result = new LinkedList<>();
+		
+		while((s = br.readLine()) != null) {
+			String[] current = s.split("\t");
+			
+			if(!current[0].equals(last)) {
+				result.add(current[0]);
+				last = current[0];
+			} else {
+				result.remove(last);
+			}
+        }
+		for(String entry: result) {
+			System.out.println(entry);
+		}
+	}
+}
+
+7. java
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Main {
+	public static void main(final String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				
+		String s, lastUser = null;	
+		List<String> queries = new LinkedList<>();
+		List<String> urls = new LinkedList<>();
+		
+		while((s = br.readLine()) != null) {			
+			String[] current = s.split("\t");
+			String[] currentData = current[1].split(":");
+			
+			if(!current[0].equals(lastUser) && lastUser != null) {
+				for(String entryQ : queries) {
+					for(String entryU : urls) {
+						System.out.println(lastUser + "\t" + entryQ + "\t" + entryU);
+					}
+				}
+				queries.clear();
+				urls.clear();
+			}
+			
+			if(currentData[0].equals("query")) {
+				queries.add(currentData[1]);
+                lastUser = current[0];
+			} else {
+				urls.add(currentData[1]);
+                lastUser = current[0];
+			}
+		}
+		
+		for(String entryQ : queries) {
+			for(String entryU : urls) {
+				System.out.println(lastUser + "\t" + entryQ + "\t" + entryU);
+			}
+		}
+	}
+}
+
+8. В каждом map сохранить меньшее множество в памяти и сделать join с элементами большего множества
+
+
