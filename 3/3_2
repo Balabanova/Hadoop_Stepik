@@ -1,0 +1,19 @@
+1. Обработка ошибок и отказов
+   Синхронизация этапов Map и Reduce
+   Запуск mapper и reducer
+   Копирование кода к данным
+   
+2. jobtracker
+
+3. 8
+
+4. 1500
+
+5. combine
+
+6. Этап, на котором определяется номер reducer для каждой пары key/value
+
+7. 75
+
+8. partition(key, value, reduce_number)
+   combine(key, list<value>)
