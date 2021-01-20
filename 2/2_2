@@ -1,0 +1,20 @@
+1. file:///home/user/
+   /tmp/output.txt
+   hdfs://hdfs/
+   file:///
+   
+2. -cat
+   -tail
+   -text
+   
+3. 2
+
+4. -put, -mkdir, -mv, -rm -r
+
+5. $hdfs distcp /data/file.txt /tmp/
+
+6. $hdfs dfs -cp /data/file.txt /tmp/
+
+7. Владелец может читать и писать в файл, пользователи из той же группы могут читать файл, другие ничего не могут делать с файлом
+
+8. -rwxrwxrwx
