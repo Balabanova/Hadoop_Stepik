@@ -1,6 +1,6 @@
 1. Между Map и Reducer передается много пар key / value
 
-2. Между Map и Reducer передается много пар key / value
+2. 10000 5000 100
 
 3. python
 
